@@ -9,7 +9,7 @@ export function HeroSection() {
       </div>
 
       <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight text-balance">
-        Goluleaks.com
+        Golubaba420.online
       </h1>
       <p className="text-lg text-muted-foreground max-w-xl leading-relaxed text-pretty">
         Search across multiple databases instantly. Enter any identifier and get comprehensive results with one click.
