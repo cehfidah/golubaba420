@@ -58,15 +58,9 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs">GL</span>
-            </div>
-            <span className="font-semibold text-foreground">Goluleaks.com</span>
-          </div>
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <div className="h-2 w-2 rounded-full bg-accent" />
-            API Connected
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Golubaba420 Logo" className="h-10 w-10 rounded-lg" />
+            <span className="font-semibold text-foreground">Golubaba420.online</span>
           </div>
         </div>
       </header>
@@ -159,7 +153,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border mt-auto">
         <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <span>Goluleaks.com</span>
+          <span>Golubaba420.online</span>
           <span>OSINT Intelligence Platform</span>
         </div>
       </footer>

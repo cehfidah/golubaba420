@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, DollarSign, Hash } from "lucide-react";
+import { Clock, Hash } from "lucide-react";
 
 interface SearchStatsProps {
   query: string;
@@ -41,10 +41,6 @@ export function SearchStats({ query, limit, duration }: SearchStatsProps) {
       <div className="flex items-center gap-1.5">
         <Hash className="h-3.5 w-3.5" />
         <span>Limit: {limit}</span>
-      </div>
-      <div className="flex items-center gap-1.5">
-        <DollarSign className="h-3.5 w-3.5" />
-        <span>Est. cost: ${cost}</span>
       </div>
     </div>
   );

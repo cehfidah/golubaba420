@@ -82,7 +82,7 @@ export function generatePDF(data: any, query: string): void {
     doc.setFontSize(7);
     doc.setTextColor(...grayText);
     doc.text(
-      "Goluleaks.com - OSINT Intelligence Report",
+      "Golubaba420.online - OSINT Intelligence Report",
       margin,
       footerY
     );
@@ -120,7 +120,7 @@ export function generatePDF(data: any, query: string): void {
   doc.setTextColor(...darkText);
   doc.setFontSize(28);
   doc.setFont("helvetica", "bold");
-  doc.text("Goluleaks.com", margin + 18, y + 10);
+  doc.text("Golubaba420.online", margin + 18, y + 10);
 
   // Subtitle tag
   y += 22;
@@ -368,7 +368,7 @@ export function generatePDF(data: any, query: string): void {
     const footerY = pageHeight - 10;
     doc.setFontSize(7);
     doc.setTextColor(...grayText);
-    doc.text("Goluleaks.com - OSINT Intelligence Report", margin, footerY);
+    doc.text("Golubaba420.online - OSINT Intelligence Report", margin, footerY);
     doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, footerY, {
       align: "right",
     });
@@ -378,6 +378,6 @@ export function generatePDF(data: any, query: string): void {
   }
 
   // Save the PDF
-  const filename = `Goluleaks-${query.replace(/[^a-zA-Z0-9@._-]/g, "_")}-${new Date().toISOString().slice(0, 10)}.pdf`;
+  const filename = `Golubaba420-${query.replace(/[^a-zA-Z0-9@._-]/g, "_")}-${new Date().toISOString().slice(0, 10)}.pdf`;
   doc.save(filename);
 }

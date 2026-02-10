@@ -1,4 +1,4 @@
-# Goluleaks - OSINT Intelligence Platform
+# Golubaba420 - OSINT Intelligence Platform
 
 A powerful Open Source Intelligence (OSINT) search platform built with Next.js 16, TypeScript, and Tailwind CSS. Search across multiple databases for emails, names, phone numbers, and usernames.
 
@@ -27,8 +27,8 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/goluleaks.git
-   cd goluleaks
+   git clone https://github.com/yourusername/golubaba420.git
+   cd golubaba420
    ```
 
 2. **Install dependencies**
@@ -61,7 +61,7 @@ Before you begin, ensure you have the following installed:
 ## 🏗️ Project Structure
 
 ```
-goluleaks/
+golubaba420/
 ├── app/                    # Next.js app directory
 │   ├── api/               # API routes
 │   │   └── search/        # Search endpoint
