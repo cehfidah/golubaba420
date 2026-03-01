@@ -3,36 +3,13 @@ frontend:
   phases:
     preBuild:
       commands:
-        # Verify environment variables are loaded
-        - |
-          echo "🔍 Checking environment variables..."
-          if [ -z "$LEAKOSINT_API_TOKEN" ]; then
-            echo "❌ ERROR: LEAKOSINT_API_TOKEN not set!"
-            exit 1
-          fi
-          if [ -z "$SEARCH_PIN" ]; then
-            echo "❌ ERROR: SEARCH_PIN not set!"
-            exit 1
-          fi
-          if [ -z "$SEARCH_AUTH_SECRET" ]; then
-            echo "❌ ERROR: SEARCH_AUTH_SECRET not set!"
-            exit 1
-          fi
-          echo "✅ All required environment variables are set"
-        
         # Install dependencies
         - npm ci --legacy-peer-deps
     
     build:
       commands:
-        # Build with environment variables available
+        # Build Next.js app - environment variables from Amplify console will be available
         - npm run build
-      env:
-        # Explicitly pass environment variables to build process
-        LEAKOSINT_API_TOKEN: $LEAKOSINT_API_TOKEN
-        SEARCH_PIN: $SEARCH_PIN
-        SEARCH_AUTH_SECRET: $SEARCH_AUTH_SECRET
-        NODE_ENV: production
   
   artifacts:
     baseDirectory: .next
@@ -43,4 +20,5 @@ frontend:
     paths:
       - node_modules/**/*
       - .next/cache/**/*
+
 
