@@ -6,9 +6,6 @@ import {
   getSearchAuthCookieName,
 } from "@/lib/search-auth";
 
-const SEARCH_PIN = process.env.SEARCH_PIN;
-const SEARCH_AUTH_SECRET = process.env.SEARCH_AUTH_SECRET;
-
 function isValidPin(pin: string, expectedPin: string): boolean {
   const provided = Buffer.from(pin, "utf8");
   const expected = Buffer.from(expectedPin, "utf8");
@@ -22,6 +19,10 @@ function isValidPin(pin: string, expectedPin: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    // Read environment variables at request time, not module load time
+    const SEARCH_PIN = process.env.SEARCH_PIN;
+    const SEARCH_AUTH_SECRET = process.env.SEARCH_AUTH_SECRET;
+
     if (!SEARCH_PIN) {
       return NextResponse.json(
         { error: "Server is missing SEARCH_PIN configuration" },

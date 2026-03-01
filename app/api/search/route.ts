@@ -5,8 +5,6 @@ import {
 } from "@/lib/search-auth";
 
 const API_URL = "https://leakosintapi.com/";
-const API_TOKEN = process.env.LEAKOSINT_API_TOKEN;
-const SEARCH_AUTH_SECRET = process.env.SEARCH_AUTH_SECRET;
 
 function isPlaceholderToken(token: string): boolean {
   const normalized = token.trim().toLowerCase();
@@ -20,6 +18,10 @@ function isPlaceholderToken(token: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    // Read environment variables at request time, not module load time
+    const API_TOKEN = process.env.LEAKOSINT_API_TOKEN;
+    const SEARCH_AUTH_SECRET = process.env.SEARCH_AUTH_SECRET;
+
     if (!API_TOKEN) {
       return NextResponse.json(
         { error: "Server is missing LEAKOSINT_API_TOKEN configuration" },
