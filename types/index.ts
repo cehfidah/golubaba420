@@ -31,12 +31,15 @@ export interface SearchStats {
 // Component Props Types
 export interface SearchFormProps {
   onSearch: (query: string, limit: number, lang: string) => void;
+  onUnlock: (pin: string) => Promise<void>;
+  isUnlocked: boolean;
   isLoading: boolean;
 }
 
 export interface SearchResultsProps {
   data: SearchResponse;
   query: string;
+  onAddToSurveillanceList?: (query: string) => void;
 }
 
 export interface SearchStatsProps {

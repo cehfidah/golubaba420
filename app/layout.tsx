@@ -1,6 +1,8 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/sonner'
 
 import './globals.css'
 
@@ -18,8 +20,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${_inter.variable} ${_jetbrains.variable} font-sans antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${_inter.variable} ${_jetbrains.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+          <Toaster richColors position="top-right" />
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

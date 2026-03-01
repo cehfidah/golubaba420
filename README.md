@@ -16,6 +16,11 @@ A powerful Open Source Intelligence (OSINT) search platform built with Next.js 1
 - **Dark Mode Support**: Built-in theme support with next-themes
 - **Modern UI**: Beautiful, responsive interface using Radix UI components
 - **Type-Safe**: Fully typed with TypeScript for better development experience
+- **Cinematic Intro Animation**: Animated startup sequence with floating radar rings and drifting particle balls (framer-motion)
+- **Device Fingerprint Intelligence**: Real-time geo-location, browser, OS, screen resolution, and device fingerprint detection displayed in a sleek sidebar intel feed
+- **Surveillance Watchlist**: Add keywords/numbers to a persistent watched targets list with automatic alerts when new records are found
+- **PIN-Protected Access**: Server-side PIN verification with HttpOnly signed cookies for secure session management
+- **Dramatic UI Copy**: Intelligence-system themed messaging for errors, searches, and system states
 
 ## 📋 Prerequisites
 
@@ -44,6 +49,8 @@ Before you begin, ensure you have the following installed:
    Create a `.env.local` file in the root directory:
    ```env
    LEAKOSINT_API_TOKEN=your_api_token_here
+   SEARCH_PIN=your_6_digit_pin_here
+   SEARCH_AUTH_SECRET=replace_with_a_long_random_secret
    ```
 
 4. **Run the development server**
@@ -100,6 +107,36 @@ golubaba420/
   - **JSON**: Raw data format
   - **CSV**: Spreadsheet-compatible format
   - **PDF**: Formatted report
+
+## ✨ Advanced Features
+
+### Cinematic Startup Animation
+The intro sequence features a dramatic surveillance system boot sequence with:
+- **Animated Radar Rings**: Multi-layer concentric circles with breathing opacity
+- **Floating Particle Balls**: 6 drifting animated spheres with randomized trajectories and fade effects
+- **Typewriter Title**: Character-by-character reveal of "GOLU BABA SURVEILLANCE INTELLIGENCE SYSTEM"
+- **System Status Indicators**: Real-time boot sequence stages (Signal Sweep → Intel Data Core → Access Matrix → Ready)
+- **Boot Logs**: Animated log lines showing system initialization progress
+- **Auto-Dismiss**: Sequence automatically advances to main interface after ~4 seconds
+
+### Device Fingerprint Intelligence Sidebar
+Real-time security intelligence displayed in a sleek sidebar feed:
+- **IP Address**: Live geolocation detection
+- **Geographic Location**: City and country detection
+- **Browser Info**: Detected browser type and version
+- **Operating System**: Windows, macOS, Linux, iOS, or Android detection
+- **Screen Resolution**: Current viewport dimensions
+- **Timezone**: User's configured timezone
+- **Device Fingerprint**: Generated hash based on browser, OS, screen, and language data
+- **Sticky Panel**: Remains visible while scrolling through results on desktop
+
+### Surveillance Watchlist
+Monitor specific keywords or numbers across multiple searches:
+- **Add to Watchlist**: Click "Add this keyword/number to surveillance list" when no results found
+- **Persistent Storage**: Watched targets stored in browser localStorage
+- **Live Counter**: Header displays count of tracked targets
+- **Automatic Alerts**: Toast notification triggered when new records appear for watched keywords
+- **Manage Targets**: View, remove individual items, or clear entire list from tracked targets panel
 
 ## 🔧 Available Scripts
 
@@ -160,6 +197,8 @@ npm run start
 ## 🔒 Security
 
 - API tokens are stored in environment variables
+- Search PIN validation is enforced server-side via `SEARCH_PIN`
+- Search authorization uses signed `HttpOnly` cookies via `SEARCH_AUTH_SECRET`
 - Never commit `.env.local` to version control
 - Input sanitization is implemented in API routes
 - Rate limiting is handled by the external API

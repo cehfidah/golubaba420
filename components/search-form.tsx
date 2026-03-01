@@ -32,11 +32,13 @@ const languages: Language[] = [
   { value: "ko", label: "Korean" },
 ];
 
-export function SearchForm({ onSearch, isLoading }: SearchFormProps) {
+export function SearchForm({ onSearch, onUnlock, isUnlocked, isLoading }: SearchFormProps) {
   const [query, setQuery] = useState("");
+  const [pin, setPin] = useState("");
   const [limit, setLimit] = useState("100");
   const [lang, setLang] = useState("en");
   const [showOptions, setShowOptions] = useState(false);
+  const [isUnlocking, setIsUnlocking] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,8 +47,59 @@ export function SearchForm({ onSearch, isLoading }: SearchFormProps) {
     }
   };
 
+  const handleUnlock = async () => {
+    if (!pin.trim()) return;
+    setIsUnlocking(true);
+    try {
+      await onUnlock(pin.trim());
+      setPin("");
+    } finally {
+      setIsUnlocking(false);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      {!isUnlocked && (
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="pin" className="text-sm font-medium text-foreground">
+            Type Your Intelligence Code
+          </Label>
+          <p className="text-xs text-muted-foreground">
+            Clearance required to initialize surveillance records search.
+          </p>
+          <div className="flex gap-3">
+            <Input
+              id="pin"
+              type="password"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              maxLength={6}
+              placeholder="Type your intell code"
+              value={pin}
+              onChange={(e) => setPin(e.target.value.replace(/\D/g, ""))}
+              className="h-12 text-base bg-card text-card-foreground border-border placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary"
+              disabled={isLoading || isUnlocking}
+              autoComplete="off"
+            />
+            <Button
+              type="button"
+              onClick={handleUnlock}
+              disabled={isLoading || isUnlocking || !pin.trim()}
+              className="h-12 px-6 bg-primary text-primary-foreground hover:bg-primary/90 text-base font-medium"
+            >
+              {isUnlocking ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Verifying Clearance
+                </>
+              ) : (
+                "Initialize Access"
+              )}
+            </Button>
+          </div>
+        </div>
+      )}
       <div className="flex gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -61,16 +114,16 @@ export function SearchForm({ onSearch, isLoading }: SearchFormProps) {
         </div>
         <Button
           type="submit"
-          disabled={isLoading || !query.trim()}
+          disabled={isLoading || !query.trim() || !isUnlocked}
           className="h-12 px-8 bg-primary text-primary-foreground hover:bg-primary/90 text-base font-medium"
         >
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Searching
+              Scanning Intelligence Records
             </>
           ) : (
-            "Search"
+            "Scan Intelligence Records"
           )}
         </Button>
       </div>
