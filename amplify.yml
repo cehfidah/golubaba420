@@ -3,12 +3,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        # Install dependencies
         - npm ci --legacy-peer-deps
     
     build:
       commands:
-        # Build Next.js app - secrets will be available as environment variables
         - npm run build
   
   artifacts:
@@ -20,13 +18,6 @@ frontend:
     paths:
       - node_modules/**/*
       - .next/cache/**/*
-  
-  # Reference secrets from AWS Secrets Manager
-  # Amplify will automatically inject them as environment variables
-  secrets:
-    - LEAKOSINT_API_TOKEN
-    - SEARCH_PIN
-    - SEARCH_AUTH_SECRET
 
 
 
