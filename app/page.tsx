@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { HeroSection } from "@/components/hero-section";
+import { HackerCanvas } from "@/components/hacker-canvas";
 import { IntroAnimation } from "@/components/intro-animation";
 import { SearchForm } from "@/components/search-form";
 import { SearchResults } from "@/components/search-results";
@@ -27,7 +28,8 @@ function getTotalResultCount(data: SearchResponse): number {
 export default function Home() {
   const [results, setResults] = useState<SearchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
+  const [showHackerCanvas, setShowHackerCanvas] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const [showIntelligence, setShowIntelligence] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -171,8 +173,18 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background">
+      {/* Step 0: Hacker Canvas Loading */}
+      {showHackerCanvas && (
+        <HackerCanvas
+          onComplete={() => {
+            setShowHackerCanvas(false);
+            setShowIntro(true);
+          }}
+        />
+      )}
+
       {/* Step 1: Intro Animation */}
-      {showIntro && (
+      {showIntro && !showHackerCanvas && (
         <IntroAnimation
           onComplete={() => {
             setShowIntro(false);
@@ -182,7 +194,7 @@ export default function Home() {
       )}
 
       {/* Step 2: Intelligence Page */}
-      {showIntelligence && !showIntro && (
+      {showIntelligence && !showIntro && !showHackerCanvas && (
         <IntelligenceDisplay
           onClose={() => setShowIntelligence(false)}
           showNavigationButtons={true}
@@ -191,7 +203,7 @@ export default function Home() {
       )}
 
       {/* Step 3: Search Page (Main Interface) */}
-      {!showIntro && !showIntelligence && (
+      {!showIntro && !showIntelligence && !showHackerCanvas && (
         <>
           {/* Header */}
           <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
