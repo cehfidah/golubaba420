@@ -107,7 +107,7 @@ Environment: Production, Preview, Development
 ## Troubleshooting
 
 ### Error: "Server is missing SEARCH_PIN configuration"
-**Solution**: Add `SEARCH_PIN=326650` to your production environment variables
+**Solution**: Add `SEARCH_PIN=113377` to your production environment variables
 
 ### Error: "Server is missing SEARCH_AUTH_SECRET configuration"
 **Solution**: Add `SEARCH_AUTH_SECRET` with a strong random value to your production environment
@@ -143,7 +143,7 @@ After deployment, check that environment variables are working:
 1. Open your production URL
 2. Open browser console (F12)
 3. Try to search without entering PIN - you should see authentication required
-4. Enter PIN `326650` - authentication should succeed
+4. Enter PIN `113377` - authentication should succeed
 5. Try a search - it should query the LeakOSINT API
 
 If any step fails, check the server logs for specific error messages about missing environment variables.
@@ -155,7 +155,7 @@ If any step fails, check the server logs for specific error messages about missi
 ```bash
 # AWS Amplify / Vercel / Other platforms
 LEAKOSINT_API_TOKEN=6512523069:ui73uF3d
-SEARCH_PIN=326650
+SEARCH_PIN=113377
 SEARCH_AUTH_SECRET=golu_baba_intelligence_system_secret_key_2026_production_jwt_signing_key_do_not_share_this
 ```
 

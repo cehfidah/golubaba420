@@ -98,7 +98,7 @@ Variable 3:
 After deployment completes:
 
 1. Open [https://golubaba420.online](https://golubaba420.online)
-2. Try entering PIN: `326650`
+2. Try entering PIN: `113377`
 3. Should see success (not error about missing configuration)
 4. Try a search to verify API token works
 
